@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good & Handy — Screen Replacement Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2e4a;
+    --orange: #e8621a;
+    --orange-light: #f5843e;
+    --cream: #fafaf8;
+    --light-gray: #f0f0ec;
+    --mid-gray: #c8c8c0;
+    --text: #1a2e4a;
+    --border: #d8d8d0;
+
+    --cat-standard: #4a9e6b;
+    --cat-custom: #2e7ab8;
+    --cat-oversized: #e8621a;
+    --cat-frame: #8b4fa8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #e8e8e2;
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 28px 40px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid var(--orange);
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+
+  .brand-name span {
+    color: var(--orange);
+  }
+
+  .brand-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .header-meta {
+    text-align: right;
+  }
+
+  .doc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .doc-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+  }
+
+  /* ── CLIENT INFO BAR ── */
+  .info-bar {
+    background: var(--light-gray);
+    padding: 12px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-bar .info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .info-bar .label {
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 10px;
+    flex-shrink: 0;
+    min-width: 90px;
+  }
+
+  .info-bar .value {
+    color: #333;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ── LEGEND ── */
+  .legend-bar {
+    padding: 14px 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .legend-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-right: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── CATEGORY SECTION ── */
+  .section {
+    padding: 22px 40px 10px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px 5px 10px;
+    border-radius: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .section-badge .badge-icon {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .section-price-note {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 40px 0;
+  }
+
+  /* ── GRID ── */
+  .screens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    padding: 0 40px 20px;
+  }
+
+  /* ── SCREEN CARD ── */
+  .screen-card {
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .screen-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  }
+
+  .card-top {
+    padding: 10px 12px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .screen-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .tag-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-end;
+  }
+
+  .tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .tag-standard  { background: var(--cat-standard); }
+  .tag-custom    { background: var(--cat-custom); }
+  .tag-oversized { background: var(--cat-oversized); }
+  .tag-frame     { background: var(--cat-frame); }
+
+  /* ── VISUAL SCREEN ── */
+  .screen-visual-wrap {
+    padding: 4px 12px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 130px;
+  }
+
+  .screen-visual {
+    position: relative;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .screen-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(currentColor 1px, transparent 1px),
+      linear-gradient(90deg, currentColor 1px, transparent 1px);
+    background-size: 9px 9px;
+    opacity: 0.12;
+  }
+
+  .screen-dims {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.88);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: #111 !important;
+  }
+
+  /* ── CARD BOTTOM ── */
+  .card-bottom {
+    background: var(--navy);
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sq-in {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  .card-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--orange-light);
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    margin: 0 40px 28px;
+    background: var(--navy);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .summary-title {
+    background: var(--orange);
+    padding: 8px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .summary-rows {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .summary-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .summary-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .summary-row .desc { flex: 1; }
+
+  .summary-row .qty {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    width: 50px;
+    text-align: right;
+  }
+
+  .summary-row .price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    width: 80px;
+    text-align: right;
+  }
+
+  .summary-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 4px 0;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 18px 14px;
+    gap: 16px;
+    align-items: baseline;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .total-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .total-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--orange-light);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    border-top: 4px solid var(--orange);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .footer-brand span { color: var(--orange); }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-align: right;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <div class="brand-name">Good <span>&</span> Handy</div>
+      <div class="brand-tagline">Professional Handyman Services</div>
+    </div>
+    <div class="header-meta">
+      <div class="doc-title">Screen Replacement</div>
+      <div class="doc-sub">Measurement & Category Reference</div>
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-row"><div class="label">Client</div><div class="value">Kamal & Pranjal</div></div>
+    <div class="info-row"><div class="label">Address</div><div class="value">11365 Alvarez Meadow Ct, San Diego, CA</div></div>
+    <div class="info-row"><div class="label">Date</div><div class="value">June 6, 2026</div></div>
+    <div class="info-row"><div class="label">Total Screens</div><div class="value">12</div></div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend-bar">
+    <span class="legend-title">Legend</span>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cat-standard)"></div> Standard</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cat-custom)"></div> Custom</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cat-oversized)"></div> Custom + Oversized</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cat-frame)"></div> Custom + Oversized + New Frame</div>
+  </div>
+
+  <!-- STANDARD -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-badge" style="background:var(--cat-standard)">
+        <div class="badge-icon"></div>
+        Standard · 2 screens
+      </div>
+      <div class="section-price-note">$75/ea · 2 qty = $150.00</div>
+    </div>
+  </div>
+  <div class="screens-grid" id="standard-grid"></div>
+  <div class="section-divider"></div>
+
+  <!-- CUSTOM -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-badge" style="background:var(--cat-custom)">
+        <div class="badge-icon"></div>
+        Custom · 3 screens
+      </div>
+      <div class="section-price-note">$100/ea · 3 qty = $300.00</div>
+    </div>
+  </div>
+  <div class="screens-grid" id="custom-grid"></div>
+  <div class="section-divider"></div>
+
+  <!-- CUSTOM OVERSIZED -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-badge" style="background:var(--cat-oversized)">
+        <div class="badge-icon"></div>
+        Custom + Oversized · 6 screens
+      </div>
+      <div class="section-price-note">$100 + $15 oversized surcharge · 6 qty = $690.00</div>
+    </div>
+  </div>
+  <div class="screens-grid" id="oversized-grid"></div>
+  <div class="section-divider"></div>
+
+  <!-- CUSTOM OVERSIZED + FRAME -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-badge" style="background:var(--cat-frame)">
+        <div class="badge-icon"></div>
+        Custom + Oversized + New Frame · 1 screen
+      </div>
+      <div class="section-price-note">$100 + $15 oversized + $10 frame · 1 qty = $125.00</div>
+    </div>
+  </div>
+  <div class="screens-grid" id="frame-grid"></div>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <div class="summary-title">Estimate Summary</div>
+    <div class="summary-rows">
+      <div class="summary-row">
+        <div class="summary-dot" style="background:var(--cat-standard)"></div>
+        <div class="desc">Replace Window Screen (Standard)</div>
+        <div class="qty">2 qty @ $75</div>
+        <div class="price">$150.00</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-dot" style="background:var(--cat-custom)"></div>
+        <div class="desc">Replace Window Screen (Custom)</div>
+        <div class="qty">10 qty @ $100</div>
+        <div class="price">$1,000.00</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-dot" style="background:var(--cat-oversized)"></div>
+        <div class="desc">Oversized Surcharge</div>
+        <div class="qty">7 qty @ $15</div>
+        <div class="price">$105.00</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-dot" style="background:var(--cat-frame)"></div>
+        <div class="desc">New Metal Frame</div>
+        <div class="qty">1 qty @ $10</div>
+        <div class="price">$10.00</div>
+      </div>
+    </div>
+    <div class="summary-total">
+      <div class="total-label">Total Estimated Cost</div>
+      <div class="total-value">$1,265.00</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Good <span>&</span> Handy</div>
+    <div class="footer-note">
+      All measurements are in inches (H × W) · Materials included<br>
+      This diagram corresponds to estimate dated June 6, 2026
+    </div>
+  </div>
+
+</div>
+
+<script>
+const screens = [
+  { num: 1,  w: 46.5, h: 30,   cat: 'custom',    tags: ['custom'] },
+  { num: 2,  w: 39,   h: 29,   cat: 'custom',    tags: ['custom'] },
+  { num: 3,  w: 17,   h: 20,   cat: 'standard',  tags: ['standard'] },
+  { num: 4,  w: 46,   h: 28,   cat: 'custom',    tags: ['custom'] },
+  { num: 5,  w: 57,   h: 28.5, cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 6,  w: 52,   h: 26,   cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 7,  w: 17,   h: 20,   cat: 'standard',  tags: ['standard'] },
+  { num: 8,  w: 58,   h: 28,   cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 9,  w: 57.5, h: 16.5, cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 10, w: 57.5, h: 34.5, cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 11, w: 57.5, h: 34.5, cat: 'oversized', tags: ['custom', 'oversized'] },
+  { num: 12, w: 57,   h: 27.5, cat: 'frame',     tags: ['custom', 'oversized', 'new frame'] },
+];
+
+const catColor = {
+  standard: 'var(--cat-standard)',
+  custom: 'var(--cat-custom)',
+  oversized: 'var(--cat-oversized)',
+  frame: 'var(--cat-frame)',
+};
+
+const tagClass = {
+  'standard': 'tag-standard',
+  'custom': 'tag-custom',
+  'oversized': 'tag-oversized',
+  'new frame': 'tag-frame',
+};
+
+const prices = {
+  standard: 75,
+  custom: 100,
+  oversized: 115,
+  frame: 125,
+};
+
+function calcVisualSize(h, w) {
+  // h = first number (height), w = second number (width)
+  // Force portrait: visual height is always the larger rendered dimension
+  const MAX_H = 120;
+  const MAX_W = 100;
+  const scale = Math.min(MAX_H / h, MAX_W / w);
+  return { vw: Math.round(w * scale), vh: Math.round(h * scale) };
+}
+
+function buildCard(s) {
+  // s.w = first dimension (actual height), s.h = second dimension (actual width)
+  const { vw, vh } = calcVisualSize(s.w, s.h);
+  const sqIn = (s.w * s.h).toFixed(0);
+  const price = prices[s.cat];
+  const color = catColor[s.cat];
+
+  const tagsHtml = s.tags.map(t =>
+    `<div class="tag ${tagClass[t]}">${t}</div>`
+  ).join('');
+
+  return `
+  <div class="screen-card">
+    <div class="card-top">
+      <div class="screen-number">#${s.num}</div>
+      <div class="tag-stack">${tagsHtml}</div>
+    </div>
+    <div class="screen-visual-wrap">
+      <div class="screen-visual" style="width:${vw}px;height:${vh}px;color:${color}">
+        <div class="screen-dims">${s.w}" × ${s.h}"</div>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <div class="sq-in">${sqIn} sq in</div>
+      <div class="card-price">$${price}</div>
+    </div>
+  </div>`;
+}
+
+const grids = {
+  standard: document.getElementById('standard-grid'),
+  custom: document.getElementById('custom-grid'),
+  oversized: document.getElementById('oversized-grid'),
+  frame: document.getElementById('frame-grid'),
+};
+
+screens.forEach(s => {
+  grids[s.cat].innerHTML += buildCard(s);
+});
+</script>
+</body>
+</html>
